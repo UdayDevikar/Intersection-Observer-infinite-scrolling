@@ -21,9 +21,9 @@ function getCurrentTime(){
     }
     else if (hours == 12){
         am_pm = "PM"
-    }else if (hh >12 ){
+    }else if (hours >12 ){
         am_pm = "PM"
-        hours = parseInt(hh) - 12
+        hours = parseInt(hours) - 12
     }
 
     return `${hours} : ${minutes} : ${seconds} ${am_pm}`
