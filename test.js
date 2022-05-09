@@ -1,33 +1,27 @@
-function show(){
 
-    console.log("show")
-    let div = document.querySelector(".container");
+arr = []
+document.getElementById("add_number").addEventListener("click", AddNumber)
+document.getElementById("find_max").addEventListener("click", getIt)
 
-    div.innerHTML = getCurrentTime()
-}
-
-function getCurrentTime(){
-
-    let date = new Date()
-
-    let hours = date.getHours()
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds()
-    let am_pm = "AM"
-
-
-    if (hours == '00'){
-        hours = 12
-    }
-    else if (hours == 12){
-        am_pm = "PM"
-    }else if (hours >12 ){
-        am_pm = "PM"
-        hours = parseInt(hours) - 12
-    }
-
-    return `${hours} : ${minutes} : ${seconds} ${am_pm}`
+function AddNumber(){
+    arr.push(parseInt(document.getElementById("number").value))
+    document.getElementById("number").value = ""
 }
 
 
-setInterval(show, 1000)
+function getIt(){
+    let max = 0
+    let second_max = 0
+    for (let i = 0; i < arr.length; i++){
+        if (arr[i] > max) {
+            second_max = max
+            max = arr[i]
+        }
+    }
+
+
+    document.getElementById("max").innerHTML = max
+    document.getElementById("second_max").innerHTML = second_max
+
+    return [max, second_max]
+}
